@@ -11,7 +11,7 @@ export default function Header() {
             window.location.href = "/front-end-roadmap";
           }}
         />
-        <h3>程序员斌少</h3>
+        <h3>前端斌少</h3>
         <span className="github-button">
           <iframe
             src="https://ghbtns.com/github-btn.html?user=binshao996&repo=frontend-roadmap&type=star&count=true&size=large"

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 import domtoimage from "dom-to-image";
 import "rc-switch/assets/index.css";
@@ -15,7 +15,7 @@ const options = [
 ];
 
 function Index() {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [process, setProcess] = useState(options[0]);
 
@@ -29,14 +29,14 @@ function Index() {
       if (options.target && options.target.link) {
         // 是否有跳转到markdown，从markdown返回的时候需要绘制一次
         window.__GO_TO_MARKDOWN__ = true;
-        history.push(`/guide${options.target.link}`);
+        navigate(`/guide${options.target.link}`);
       }
     };
     canvas.on("mouse:down", canvasMouseDownHandler);
     return () => {
       canvas.off("mouse:down", canvasMouseDownHandler);
     };
-  }, [history, process]);
+  }, [navigate, process]);
 
   const onDownloadImg = useCallback(() => {
     const $el = document.querySelector(".roadmap");

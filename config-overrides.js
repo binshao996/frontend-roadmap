@@ -1,9 +1,3 @@
-/**
- * /* config-overrides.js
- *
- * @format
- */
-
 const { override, addWebpackModuleRule } = require("customize-cra");
 
 module.exports = override(

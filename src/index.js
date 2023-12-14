@@ -1,18 +1,26 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { HashRouter as Router, Route } from "react-router-dom";
-import './App.css';
+import { createRoot } from 'react-dom/client';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import './global.css';
 import Index from './page/index';
 import Guide from './page/guide';
-import Header from './components/header'
+import Header from './components/header';
 
-ReactDOM.render(
+const container = document.getElementById('app');
+const root = createRoot(container);
+
+root.render(
   <>
     <Header />
-    <Router basename="/frontend-roadmap">
-      <Route exact path="/" component={Index} />
-      <Route path="/guide/:query" component={Guide} />
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Index />} />
+        <Route path="/guide/:query" element={<Guide />} />
+      </Routes>
     </Router>
-  </>,
-  document.getElementById('app')
+  </>
 );
+
+if (module.hot) {
+  module.hot.accept();
+}
