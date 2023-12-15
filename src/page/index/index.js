@@ -17,18 +17,18 @@ const options = [
 function Index() {
   const navigate = useNavigate();
 
-  const [process, setProcess] = useState(options[0]);
+  const [stage, setStage] = useState(options[0]);
 
   useEffect(() => {
     const canvas = drawRoadmap(
       `roadmapCanvas`,
-      roadMap[process.value]
+      roadMap[stage.value]
     );
-    // canvas.setHeight(process.canvasHeight);
+    // canvas.setHeight(stage.canvasHeight);
     const canvasMouseDownHandler = (options) => {
       if (options.target && options.target.link) {
         // 是否有跳转到markdown，从markdown返回的时候需要绘制一次
-        window.__GO_TO_MARKDOWN__ = true;
+        window.__GOTO_MARKDOWN__ = true;
         navigate(`/guide${options.target.link}`);
       }
     };
@@ -36,38 +36,38 @@ function Index() {
     return () => {
       canvas.off("mouse:down", canvasMouseDownHandler);
     };
-  }, [navigate, process]);
+  }, [navigate, stage]);
 
-  const onDownloadImg = useCallback(() => {
+  const download = useCallback(() => {
     const $el = document.querySelector(".roadmap");
-    const downloadName = process.label
+    const downloadName = stage.label
       .replace(/\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g, "")
       .trim();
-    domtoimage.toJpeg($el).then(function (dataUrl) {
+    domtoimage.toJpeg($el).then((dataUrl) => {
       const link = document.createElement("a");
       link.download = `roadmap-${downloadName}.jpeg`;
       link.href = dataUrl;
       link.click();
     });
-  }, [process]);
+  }, [stage]);
 
   return (
     <div className="roadmap-container">
-      <div className="process-select-container">
+      <div className="stage-container">
         <Select
           options={options}
           defaultValue={options[0]}
-          onChange={setProcess}
+          onChange={setStage}
           placeholder="请选择"
-          className="process-select"
+          className="stage-select"
         />
-        <div className="download" onClick={onDownloadImg}>
+        <div className="download" onClick={download}>
           下载路线图
         </div>
       </div>
 
       <div className="roadmap">
-      <div className="desc-container">
+        <div className="desc-container">
           <div className="explain-square">
             <div className="explain-content">
               <div>
@@ -99,7 +99,7 @@ function Index() {
           </div>
         </div>
         <div>
-          <canvas id={`roadmapCanvas`} height="5000px" width="1000px" />
+          <canvas id='roadmapCanvas' height="5000px" width="1000px" />
         </div>
       </div>
     </div>

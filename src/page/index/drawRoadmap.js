@@ -4,11 +4,10 @@ import { fabric } from "fabric";
 export const CARD_CONFIG = {
   width: 140,
   height: 40,
-  bgColor: ["#ea5455", "#f07b3f", "#ffd460"],
+  bgColor: ["#f44336", "#4caf50", "#2196f3"],
   subCardMargin: 10,
   lineColor: "#fff",
-  textColor: "#444",
-  strokeColor: "#3A7AF2",
+  textColor: "#fff"
 };
 
 export const TAG_ICON_MAP = {
@@ -43,14 +42,6 @@ export function c(text, x, w = 200, opt, children) {
 //   3: "#596FFB",
 // };
 export function makeTag(tag, instance, isleft) {
-  // const Circle = new fabric.Circle({
-  //   fill: processColorMap[process],
-  //   radius: 10,
-  //   originX: "center",
-  //   originY: "center",
-  //   shadow: "rgba(0,0,0,0.3) 1px 1px 2px",
-  //   hasControls: false, // 关掉拖拉控制
-  // });
   const Text = new fabric.Text(`${TAG_ICON_MAP[tag]}`, {
     fontSize: 14,
     fill: "#fff",
@@ -83,8 +74,6 @@ export function makeTextSquare(
     h = CARD_CONFIG.height,
     bgColor = CARD_CONFIG.bgColor[depth - 1],
     textColor = CARD_CONFIG.textColor,
-    isMain,
-    isEnd,
   }
 ) {
   const Square = new fabric.Rect({
@@ -180,9 +169,9 @@ export default function drawRoadmap(id, roadmap) {
   };
   if (canvas) {
     canvas.clear();
-    if (window.__GO_TO_MARKDOWN__) {
+    if (window.__GOTO_MARKDOWN__) {
       canvas = new fabric.Canvas(id, options);
-      window.__GO_TO_MARKDOWN__ = false;
+      window.__GOTO_MARKDOWN__ = false;
     }
   } else {
     canvas = new fabric.Canvas(id, options);

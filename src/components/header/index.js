@@ -26,10 +26,6 @@ export default function Header() {
       <div className="title">
         <span className="text">
           24年最新前端学习路线
-          <span className="emoji">
-            <span role="img" aria-label="line">🌟</span>
-            <span role="img" aria-label="road">🐺</span>
-          </span>
         </span>
       </div>
       <div className="sub-title"><span role="img" aria-label="workholic">👨🏻‍💻</span> 路线永无定式，编程永无止尽 <span role="img" aria-label="workholic">👨🏻‍💻</span></div>

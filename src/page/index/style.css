@@ -2,19 +2,20 @@
   font-family: Helvetica, "Hiragino Sans GB", "Microsoft Yahei", "微软雅黑",
     Arial, sans-serif;
   position: relative;
-  background-color: #2d4059;
+  background-color: #1b1d1f;
   padding-top: 60px;
 }
 .desc-container {
   margin: 0 10% 0;
   display: flex;
-  padding-top: 20px;
-  position: relative;
-  bottom: -20px;
+  position: absolute;
+  top: 40px;
 }
 .roadmap {
-  background-color: #2d4059;
-  padding-top: 40px;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0 50px;
+  background-color: #1b1d1f;
 }
 
 .desc-container .explain-square {
@@ -23,7 +24,6 @@
 }
 .desc-container .explain-square .explain-content {
   border-radius: 2px;
-  /* border: 1px solid #eee; */
   font-size: 13px;
   width: 220px;
   padding: 10px;
@@ -43,12 +43,12 @@
   padding: 2px 10px;
   background-color: #cccccc;
 }
-.process-select-container {
+.stage-container {
   display: flex;
   justify-content: flex-end;
   padding-right: 10%;
 }
-.process-select-container .tag-switch {
+.stage-container .tag-switch {
   color: #fff;
   padding-right: 10px;
   margin-right: 10px;
@@ -56,13 +56,13 @@
   line-height: 38px;
   border-right: 2px solid #aaa;
 }
-.process-select-container .tag-switch span {
+.stage-container .tag-switch span {
   margin-right: 10px;
 }
-.process-select-container .process-select {
+.stage-container .stage-select {
   width: 200px;
 }
-.process-select-container .download {
+.stage-container .download {
   color: #fff;
   padding: 0 10px;
   vertical-align: bottom;
@@ -73,15 +73,11 @@
   border-radius: 2px;
   cursor: pointer;
 }
-.process-select-container .download:hover {
+.stage-container .download:hover {
   background-color: #333;
 }
-
-.roadmap {
-  text-align: center;
-}
 .roadmap-canvas {
-  margin: 0 auto;
+  margin: 80px auto 0;
 }
 .rc-switch-checked {
   background-color: #2d4059;

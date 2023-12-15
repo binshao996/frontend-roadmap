@@ -5,7 +5,7 @@ import { c, TAG } from "./drawRoadmap.js";
  */
 export const all = [
   {
-    text: "准备开始",
+    text: "Start",
     x: 400,
     y: 0,
     process: 1,
