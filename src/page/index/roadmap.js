@@ -5,21 +5,29 @@ import { c, TAG } from "./drawRoadmap.js";
  */
 export const all = [
   {
-    text: "Start",
+    text: "开始",
     x: 400,
     y: 0,
     process: 1,
   },
   {
-    text: "互联网",
+    text: "计算机基础",
     x: 400,
     y: 100,
-    tag: TAG.recommand,
     link: "/how-does-the-internet-work",
     process: 2,
     children: [
-      [c("互联网如何运作？", 100), c("什么是HTTP/HTTPS", 100)],
-      [c("DNS原理", 700), c("CDN原理", 700)],
+      [c("进程与线程", { x: 100, y: 5 }), c("网络基础", { x: 180, y: 140 }, 100, {}, [
+        c("OSI 模型", 0, 100),
+        c("HTTP/HTTPS协议", 0, 130),
+        c("TCP/IP", 0, 100),
+        c("DNS原理", 0, 100),
+      ])],
+      [c("数据结构与算法", 600, 130, {}, [
+        c("数组、链表、栈、队列", 820, 160),
+        c("排序算法、查找算法", 820, 160),
+        c("算法复杂度分析", 820, 160),
+      ])],
     ],
   },
   {
@@ -31,13 +39,6 @@ export const all = [
     children: [
       [
         c("浏览器如何运行？", 160, 160),
-        c("浏览器差异/兼容性", 160, 160, {}, [
-          c("Chrome", 0, 120),
-          c("Safari", 0, 120),
-          c("Firefox", 0, 120),
-          c("Android Browser", 0, 120),
-          c("iOS Safari", 0, 120),
-        ]),
       ],
       [
         c("Headless Browser", 700, 200, { bgColor: "#CCCCCC" }),
@@ -55,9 +56,9 @@ export const all = [
       [],
       [
         c("VSCode", 700, 100, { tag: TAG.recommand }),
+        c("Sublime", 700, 100, { tag: TAG.optional }),
         c("WebStorm", 700, 100, { tag: TAG.optional }),
         c("Atom", 700, 100, { tag: TAG.optional }),
-        c("Sublime", 700, 100, { tag: TAG.optional }),
       ],
     ],
   },
@@ -83,13 +84,19 @@ export const all = [
       [
         c("基本语法", 700, 140),
         c("布局", 700, 140, {}, [
-          c("浮动float", 900, 100),
-          c("定位postion", 900, 100),
-          c("盒模型", 900, 100),
-          c("flex", 900, 100),
-          c("grid/layout", 900, 100),
+          c("浮动float", { x: 900, y: 540 }, 90),
+          c("定位postion", { x: 900, y: 590 }, 90),
+          c("盒模型", { x: 900, y: 640 }, 90),
+          c("flex", { x: 900, y: 690 }, 90),
+          c("grid/layout", { x: 900, y: 740 }, 90),
         ]),
         c("响应式设计", 700, 140),
+        c("预处理器", 700, 140, {} , [
+          c("Sass", { x: 900, y: 770 }, 90, { tag: TAG.recommand }),
+          c("PostCss", { x: 900, y: 820 }, 90, { tag: TAG.recommand }),
+          c("Stylus", { x: 900, y: 870 }, 90, { tag: TAG.optional }),
+          c("Less", { x: 900, y: 920 }, 90, { tag: TAG.notRecommand }),
+        ]),
       ],
     ],
   },
@@ -115,7 +122,7 @@ export const all = [
     ],
   },
   {
-    text: "版本管理工具Git",
+    text: "版本工具Git",
     x: 380,
     y: 960,
     link: "/git",
@@ -132,7 +139,7 @@ export const all = [
     ],
   },
   {
-    text: "           Node基础 \n （暂时不用深入学习）",
+    text: "Node基础",
     x: 440,
     y: 1100,
     w: 200,
@@ -154,38 +161,17 @@ export const all = [
     ],
   },
   {
-    text: "构建工具",
+    text: "构建工具基础",
     x: 400,
     y: 1300,
     link: "/build-tools",
     children: [
       [],
       [
-        c("自动化构建", { x: 600, y: 1200 }, 100, {}, [
-          c("npm script", 800, 100),
-          c("gulp", 800, 100, { bgColor: "#CCCCCC" }),
-        ]),
-        c("模块化打包", { x: 600, y: 1360 }, 100, {}, [
-          c("Webpack", 800, 100, { tag: TAG.recommand }),
-          c("Rollup", 800, 100, { tag: TAG.optional }),
-          c("Parcel", 800, 100, { tag: TAG.optional }),
-          c("Snowpack", 800, 100, { tag: TAG.optional }),
-        ]),
-      ],
-    ],
-  },
-  {
-    text: "CSS预处理",
-    x: 300,
-    y: 1400,
-    process: 2,
-    link: "/css-preprocessor",
-    children: [
-      [
-        c("Sass", 100, 100, { tag: TAG.recommand }),
-        c("PostCss", 100, 100, { tag: TAG.recommand }),
-        c("Stylus", 100, 100, { tag: TAG.optional }),
-        c("Less", 100, 100, { tag: TAG.notRecommand }),
+        c("Webpack", 800, 100, { tag: TAG.recommand }),
+        c("Rollup", 800, 100, { tag: TAG.optional }),
+        c("Parcel", 800, 100, { tag: TAG.optional }),
+        c("Snowpack", 800, 100, { tag: TAG.optional }),
       ],
     ],
   },
@@ -206,7 +192,7 @@ export const all = [
           c("VueX", 10, 100, { tag: TAG.recommand }),
           c("Vue-router", 10, 100, { tag: TAG.recommand }),
         ]),
-        c("Angular", { x: 200, y: 1800 }, 100, {}, [
+        c("Angular", { x: 200, y: 1800 }, 100, { bgColor: "#CCC" }, [
           c("RxJS", 10, 100),
           c("NgRx", 10, 100),
         ]),
@@ -214,7 +200,7 @@ export const all = [
     ],
   },
   {
-    text: "CSS框架",
+    text: "UI组件库",
     x: 400,
     y: 1900,
     process: 2,
@@ -224,21 +210,6 @@ export const all = [
       [
         c("Antd", 700, 100, { tag: TAG.recommand }),
         c("Element UI", 700, 100, { tag: TAG.recommand }),
-        c("Material UI", 700, 100, { tag: TAG.optional }),
-      ],
-    ],
-  },
-  {
-    text: "CSS优化方案",
-    x: 300,
-    y: 2000,
-    process: 3,
-    link: "/css-modern",
-    children: [
-      [
-        c("Styled Component", 10, 140, { tag: TAG.recommand }),
-        c("CSS Modules", 10, 140, { tag: TAG.recommand }),
-        c("Styled JSX", 10, 140, { tag: TAG.optional }),
       ],
     ],
   },
@@ -246,6 +217,7 @@ export const all = [
     text: "测试",
     x: 400,
     y: 2200,
+    bgColor: "#CCC",
     process: 3,
     link: "/test-framework",
     children: [
@@ -261,6 +233,7 @@ export const all = [
     text: "代码质量",
     x: 400,
     y: 2400,
+    bgColor: "#CCC",
     link: "/code-quality",
     process: 3,
     children: [
@@ -288,6 +261,7 @@ export const all = [
     x: 380,
     y: 2760,
     process: 3,
+    bgColor: "#CCC",
     link: "/performance",
     children: [
       [
@@ -312,6 +286,7 @@ export const all = [
     text: "数据可视化",
     x: 300,
     y: 2980,
+    bgColor: "#CCC",
     link: "/data-view",
     children: [
       [
@@ -327,6 +302,7 @@ export const all = [
     x: 420,
     y: 3180,
     process: 3,
+    bgColor: "#CCC",
     link: "/ssr",
     children: [
       [],
@@ -337,12 +313,11 @@ export const all = [
     text: "移动端应用",
     x: 360,
     y: 3340,
+    bgColor: "#CCC",
     link: "/mobile-app",
     children: [
       [
         c("React Native", 200, 100),
-        c("Weex", 200, 100),
-        c("hybrid", 200, 100),
         c("Flutter", 200, 100),
       ],
       [
@@ -358,6 +333,7 @@ export const all = [
     text: "小程序",
     x: 400,
     y: 3560,
+    bgColor: "#CCC",
     link: "/mini-app",
     children: [
       [
@@ -380,25 +356,10 @@ export const all = [
     text: "桌面应用",
     x: 450,
     y: 3670,
+    bgColor: "#CCC",
     link: "/desktop-app",
     children: [
       [c("Electron", 200, 100, { tag: TAG.recommand }), c("NW.js", 200, 100)],
-    ],
-  },
-  {
-    text: "静态站点构建",
-    x: 400,
-    y: 3840,
-    process: 3,
-    link: "/static-site",
-    children: [
-      [],
-      [
-        c("GatsbyJS", 700, 100, { tag: TAG.recommand }),
-        c("VuePress", 700, 100, { tag: TAG.recommand }),
-        c("Docusaurus", 700, 100, { tag: TAG.optional }),
-        c("Hexo", 700, 100, { tag: TAG.notRecommand }),
-      ],
     ],
   },
   {
